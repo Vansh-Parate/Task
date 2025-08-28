@@ -207,7 +207,7 @@ function App() {
                 </a>
                 <a className="pc-menu-items language-pc-menu-items" href="#" onClick={toggleDropdown}>
                   <div>
-                    <div className="language-title-box">
+                    <div className={`language-title-box ${showDropdown ? 'dropdown-open' : ''}`}>
                       <p className="language-name">{currentNav.language}</p>
                       <img src={language === "sv" ? "https://storage.123fakturere.no/public/flags/SE.png" : "https://storage.123fakturere.no/public/flags/GB.png"} className="flag-icon drop-down-image" alt="" />
                     </div>
@@ -217,20 +217,20 @@ function App() {
               
               <div className="lang-drop">
                 <div className="lang-drop-container">
-                  <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
-                    <div className="language-Svenska drop-down-element" onClick={() => handleLanguageChange('sv')}>
-                      <div className="drop-down-lang-name">Svenska</div>
-                      <div className="drop-down-image-div">
-                        <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
-                      </div>
-                    </div>
-                    <div className="language-English drop-down-element" onClick={() => handleLanguageChange('en')}>
-                      <div className="drop-down-lang-name">English</div>
-                      <div className="drop-down-image-div">
-                        <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />
-                      </div>
+                                  <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
+                  <div className={`language-Svenska drop-down-element ${language === 'sv' ? 'selected' : ''}`} onClick={() => handleLanguageChange('sv')}>
+                    <div className="drop-down-lang-name">Svenska</div>
+                    <div className="drop-down-image-div">
+                      <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
                     </div>
                   </div>
+                  <div className={`language-English drop-down-element ${language === 'en' ? 'selected' : ''}`} onClick={() => handleLanguageChange('en')}>
+                    <div className="drop-down-lang-name">English</div>
+                    <div className="drop-down-image-div">
+                      <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />
+                    </div>
+                  </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -245,13 +245,13 @@ function App() {
                   </div>
                 </div>
                 <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
-                  <div className="language-Svenska drop-down-element" onClick={() => handleLanguageChange('sv')}>
+                  <div className={`language-Svenska drop-down-element ${language === 'sv' ? 'selected' : ''}`} onClick={() => handleLanguageChange('sv')}>
                     <div className="drop-down-lang-name">Svenska</div>
                     <div className="drop-down-image-div">
                       <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
                     </div>
                   </div>
-                  <div className="language-English drop-down-element" onClick={() => handleLanguageChange('en')}>
+                  <div className={`language-English drop-down-element ${language === 'en' ? 'selected' : ''}`} onClick={() => handleLanguageChange('en')}>
                     <div className="drop-down-lang-name">English</div>
                     <div className="drop-down-image-div">
                       <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />

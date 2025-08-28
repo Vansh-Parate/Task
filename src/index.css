@@ -283,6 +283,25 @@ body {
   gap: 0.5rem;
   cursor: pointer;
   padding: 0.5rem;
+  position: relative;
+}
+
+.language-title-box::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid white;
+  transition: transform 0.2s ease;
+}
+
+.language-title-box.dropdown-open::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .language-name {
@@ -311,6 +330,16 @@ body {
 
 .drop-down-element:hover {
   background-color: #f3f4f6;
+}
+
+.drop-down-element.selected {
+  background-color: #8cc0ff;
+  color: #333;
+  font-weight: 600;
+}
+
+.drop-down-element.selected:hover {
+  background-color: #7ab0ef;
 }
 
 .drop-down-lang-name {
