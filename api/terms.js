@@ -59,11 +59,31 @@ export default async function handler(req, res) {
     // Sync the model
     await Term.sync({ force: false })
     
-    // Check if we have data, if not, seed it
+    // Check if we have data, if not, seed it with basic data
     const count = await Term.count()
     if (count === 0) {
-      const { seedTerms } = await import('../../server/seeders/terms.js')
-      await seedTerms(Term)
+      console.log('No terms found, seeding basic data...')
+      
+      // Basic seed data without importing the seeder
+      const basicTerms = [
+        {
+          lang: 'sv',
+          slug: 'terms',
+          title: 'Villkor',
+          content: '<p class=""><b>GENOM ATT</b> klicka på Fakturera Nu så väljer ni att registrera enligt den information som ni har lagt in och texten på registrerings sidan och villkoren här, och accepterar samtidigt villkoren här.</p><p class="center-text">Ni kan använda programmet GRATIS i 14 dagar.</p>'
+        },
+        {
+          lang: 'en',
+          slug: 'terms',
+          title: 'Terms',
+          content: '<p class=""><b>BY</b> clicking Invoice Now, you choose to register according to the information that you have typed in and the text on the registration page and the terms here, and you at the same time accept the terms here.</p><p class="center-text">You can use the program FOR FREE for 14 days.</p>'
+        }
+      ]
+      
+      await Term.bulkCreate(basicTerms, {
+        ignoreDuplicates: true
+      })
+      console.log('Basic terms seeded successfully')
     }
 
     const lang = (req.query.lang || 'sv').toString().slice(0, 2)
