@@ -9,10 +9,7 @@ function App() {
   const [error, setError] = useState(null)
   const [isLanguageChanging, setIsLanguageChanging] = useState(false)
 
-  const toggleDropdown = () => setShowDropdown(!showDropdown)
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-
-  // Navigation content (this could also come from database if needed)
+  // Navigation content for different languages
   const navContent = {
     sv: {
       home: "Hem",
@@ -39,7 +36,6 @@ function App() {
       setError(null)
       
       try {
-        // Use Render URL in production, relative URL in development
         const apiUrl = import.meta.env.PROD 
           ? 'https://task-ddfi.onrender.com/api/terms'
           : `/api/terms`
@@ -126,7 +122,6 @@ function App() {
 
   return (
     <div className="terms-page">
-      {/* Background Container */}
       <div className="background-container">
         <img 
           id="background-image"
@@ -136,26 +131,22 @@ function App() {
         />
       </div>
 
-      {/* Navigation */}
       <nav className="navigation-out">
         <header className="navigation-header">
           <section className="navigation-section">
-            {/* Logo - Desktop Only */}
             <div className="logoa">
               <a href="/">
                 <img alt="" className="navigation-logo" src="https://storage.123fakturera.se/public/icons/diamond.png" />
               </a>
             </div>
             
-            {/* Hamburger Menu Button - Mobile/Tablet Only */}
             <div className="hamburger-menu-container">
-              <div className="hamburger-menu" onClick={toggleMenu}>
+              <div className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="hamburger-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
                 </svg>
               </div>
               
-              {/* Hamburger Dropdown Menu */}
               {isMenuOpen && (
                 <div className="hamburger-dropdown">
                   <a className="hamburger-menu-item" href="#">
@@ -177,7 +168,6 @@ function App() {
               )}
             </div>
             
-            {/* Desktop Navigation Menu */}
             <div className="navigation-menu-bar">
               <div className="pc-menu">
                 <a className="pc-menu-items" href="#">
@@ -205,7 +195,7 @@ function App() {
                     <p className="collectionitem">{currentNav.contact}</p>
                   </span>
                 </a>
-                <a className="pc-menu-items language-pc-menu-items" href="#" onClick={toggleDropdown}>
+                <a className="pc-menu-items language-pc-menu-items" href="#" onClick={() => setShowDropdown(!showDropdown)}>
                   <div>
                     <div className={`language-title-box ${showDropdown ? 'dropdown-open' : ''}`}>
                       <p className="language-name">{currentNav.language}</p>
@@ -217,29 +207,28 @@ function App() {
               
               <div className="lang-drop">
                 <div className="lang-drop-container">
-                                  <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
-                  <div className={`language-Svenska drop-down-element ${language === 'sv' ? 'selected' : ''}`} onClick={() => handleLanguageChange('sv')}>
-                    <div className="drop-down-lang-name">Svenska</div>
-                    <div className="drop-down-image-div">
-                      <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
+                  <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
+                    <div className={`language-Svenska drop-down-element ${language === 'sv' ? 'selected' : ''}`} onClick={() => handleLanguageChange('sv')}>
+                      <div className="drop-down-lang-name">Svenska</div>
+                      <div className="drop-down-image-div">
+                        <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
+                      </div>
+                    </div>
+                    <div className={`language-English drop-down-element ${language === 'en' ? 'selected' : ''}`} onClick={() => handleLanguageChange('en')}>
+                      <div className="drop-down-lang-name">English</div>
+                      <div className="drop-down-image-div">
+                        <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />
+                      </div>
                     </div>
                   </div>
-                  <div className={`language-English drop-down-element ${language === 'en' ? 'selected' : ''}`} onClick={() => handleLanguageChange('en')}>
-                    <div className="drop-down-lang-name">English</div>
-                    <div className="drop-down-image-div">
-                      <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />
-                    </div>
-                  </div>
-                </div>
                 </div>
               </div>
             </div>
             
-            {/* Mobile Language Toggle */}
             <div className="lang-dropk">
               <div>
                 <div className="dropdownContainer">
-                  <div className="language-box" onClick={toggleDropdown}>
+                  <div className="language-box" onClick={() => setShowDropdown(!showDropdown)}>
                     <p className="flag-name collectionitem">{currentNav.language}</p>
                     <img src={language === "sv" ? "https://storage.123fakturere.no/public/flags/SE.png" : "https://storage.123fakturere.no/public/flags/GB.png"} className="icon-flag-nav" alt={currentNav.language} />
                   </div>
@@ -264,17 +253,13 @@ function App() {
         </header>
       </nav>
 
-      {/* Main Content */}
       <main className="main-content">
-        {/* Title */}
         <h1 className="page-title">{termsData?.title || 'Terms'}</h1>
 
-        {/* Close Button */}
         <button className="close-button">
           {language === 'sv' ? 'Stäng och gå tillbaka' : 'Close and Go Back'}
         </button>
 
-        {/* Terms Content Box */}
         <div className={`terms-box ${isLanguageChanging ? 'loading' : ''}`}>
           <div className="terms-content">
             {termsData?.content && (
@@ -283,7 +268,6 @@ function App() {
           </div>
         </div>
 
-        {/* Bottom Close Button */}
         <button className="bottom-close-button">
           {language === 'sv' ? 'Stäng och gå tillbaka' : 'Close and Go Back'}
         </button>

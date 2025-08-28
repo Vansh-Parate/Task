@@ -30,18 +30,3 @@ If you do not want to keep the program, just cancel the trial period by giving n
   }
 }
 
-// Export the seed data for reference
-export const termsSeedData = [
-  {
-    lang: 'sv',
-    slug: 'terms',
-    title: 'Villkor',
-    content: 'Swedish terms content with HTML formatting...'
-  },
-  {
-    lang: 'en',
-    slug: 'terms',
-    title: 'Terms',
-    content: 'English terms content with HTML formatting...'
-  }
-]

@@ -1,10 +1,11 @@
 import 'dotenv/config'
 import { Sequelize, DataTypes } from 'sequelize'
 import { seedTerms } from './server/seeders/terms.js'
+import process from 'process'
 
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/terms'
 
-// Initialize Sequelize
+// Database configuration
 const sequelize = new Sequelize(DATABASE_URL, {
   logging: false,
   dialect: 'postgres',
@@ -22,7 +23,7 @@ const sequelize = new Sequelize(DATABASE_URL, {
   }
 })
 
-// Define Terms model
+// Terms model definition
 const Term = sequelize.define('Term', {
   lang: { type: DataTypes.STRING(2), allowNull: false },
   slug: { type: DataTypes.STRING, allowNull: false },
@@ -40,23 +41,18 @@ async function runSeed() {
   try {
     console.log('🌱 Starting database seeding...')
     
-    // Test database connection
     await sequelize.authenticate()
     console.log('✅ Database connection established')
     
-    // Sync the model
     await Term.sync({ force: false })
     console.log('✅ Database model synced')
     
-    // Clear existing data to ensure fresh seeding
     await Term.destroy({ where: {} })
     console.log('✅ Cleared existing terms data')
     
-    // Run the seeder
     await seedTerms(Term)
     console.log('✅ Seeding completed successfully!')
     
-    // Verify the data
     const count = await Term.count()
     console.log(`📊 Total terms records: ${count}`)
     
@@ -80,5 +76,4 @@ async function runSeed() {
   }
 }
 
-// Run the seed
 runSeed()

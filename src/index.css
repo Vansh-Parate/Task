@@ -20,7 +20,7 @@ body {
   overflow: hidden;
 }
 
-/* Background container */
+/* Background */
 .background-container {
   position: fixed;
   width: 100%;
@@ -28,7 +28,6 @@ body {
   z-index: -100;
 }
 
-/* Background image */
 .background-image {
   width: 100%;
   min-height: 100%;
@@ -41,7 +40,7 @@ body {
   height: auto;
 }
 
-/* New Navigation Styles */
+/* Navigation */
 .navigation-out {
   width: 100%;
   position: relative;
@@ -63,7 +62,6 @@ body {
   position: relative;
 }
 
-/* Logo Container - Desktop Only */
 .logoa {
   display: none;
 }
@@ -85,7 +83,7 @@ body {
   }
 }
 
-/* Hamburger Menu - Mobile/Tablet Only */
+/* Mobile menu */
 .hamburger-menu-container {
   position: relative;
   display: block;
@@ -128,7 +126,6 @@ body {
   }
 }
 
-/* Hamburger Dropdown Menu */
 .hamburger-dropdown {
   position: absolute;
   top: 100%;
@@ -174,7 +171,7 @@ body {
   }
 }
 
-/* Desktop Navigation Menu - Using Original Code */
+/* Desktop navigation */
 .navigation-menu-bar {
   display: none;
 }
@@ -247,7 +244,6 @@ body {
   }
 }
 
-/* Ensure mobile language toggle is visible and properly aligned */
 .lang-dropk {
   display: block;
 }
@@ -258,6 +254,7 @@ body {
   }
 }
 
+/* Language dropdown */
 .dropdownList {
   position: absolute;
   top: 100%;
@@ -313,15 +310,11 @@ body {
 
 .drop-down-element {
   transition-duration: 700ms;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
   justify-content: space-between;
   cursor: pointer;
   display: flex;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
   align-items: center;
   height: 33px;
   color: #333;
@@ -359,124 +352,6 @@ body {
   border-radius: 2px;
 }
 
-/* Language Toggle - Mobile/Tablet Only */
-.language-toggle {
-  position: relative;
-  display: block;
-}
-
-@media (min-width: 1024px) {
-  .language-toggle {
-    display: none;
-  }
-}
-
-.language-toggle-container {
-  position: relative;
-}
-
-.language-toggle-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.language-toggle-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.language-toggle-text {
-  color: white;
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-@media (min-width: 768px) {
-  .language-toggle-text {
-    font-size: 1rem;
-  }
-}
-
-.language-toggle-flag {
-  width: 1.25rem;
-  height: 0.875rem;
-  object-fit: cover;
-  border-radius: 2px;
-}
-
-@media (min-width: 768px) {
-  .language-toggle-flag {
-    width: 1.5rem;
-    height: 1rem;
-  }
-}
-
-/* Language Dropdown Styles */
-.language-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  min-width: 140px;
-  z-index: 1000;
-  margin-top: 0.5rem;
-  overflow: hidden;
-  animation: dropdownFadeIn 0.2s ease;
-}
-
-@media (min-width: 768px) {
-  .language-dropdown {
-    min-width: 160px;
-  }
-}
-
-.language-option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  color: #333;
-}
-
-.language-option:hover {
-  background-color: #f8f9fa;
-}
-
-.language-option-text {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-@media (min-width: 768px) {
-  .language-option-text {
-    font-size: 1rem;
-  }
-}
-
-.language-option-flag {
-  width: 1.25rem;
-  height: 0.875rem;
-  object-fit: cover;
-  border-radius: 2px;
-}
-
-@media (min-width: 768px) {
-  .language-option-flag {
-    width: 1.5rem;
-    height: 1rem;
-  }
-}
-
 @media (min-width: 1390px) and (max-width: 1589px) and (orientation: landscape) {
   .collectionitem, .dropdownList, .menu-drop-down-item, .language-name {
     font-size: 16px;
@@ -496,88 +371,6 @@ body {
   }
 }
 
-/* Mobile menu button */
-.mobile-menu-btn {
-  display: block;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 30;
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .mobile-menu-btn {
-    display: none;
-  }
-}
-
-.mobile-menu-btn svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Mobile language switcher */
-.mobile-language-switcher {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-right: 3rem;
-}
-
-@media (min-width: 768px) {
-  .mobile-language-switcher {
-    display: none;
-  }
-}
-
-.mobile-language-switcher img {
-  width: 1.5rem;
-  height: 1rem;
-}
-
-/* Mobile menu */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: white;
-  z-index: 25;
-  padding-top: 5rem;
-}
-
-@media (min-width: 768px) {
-  .mobile-menu {
-    display: none;
-  }
-}
-
-.mobile-menu-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  color: #1f2937;
-  font-size: 1.125rem;
-}
-
-.mobile-menu-nav a {
-  color: #1f2937;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.mobile-menu-nav a:hover {
-  color: #4b5563;
-}
-
 /* Main content */
 .main-content {
   position: relative;
@@ -585,11 +378,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Prevent main-content from intercepting clicks on dropdown */
   pointer-events: none;
 }
 
-/* Allow pointer events on content within main-content */
 .main-content > * {
   pointer-events: auto;
 }
@@ -600,7 +391,6 @@ body {
   }
 }
 
-/* Page title */
 .page-title {
   color: white;
   font-weight: bolder;
@@ -626,7 +416,6 @@ body {
   }
 }
 
-/* Button transitions */
 .close-button, .bottom-close-button {
   transition: all 0.3s ease;
   opacity: 1;
@@ -638,26 +427,16 @@ body {
   transform: translateY(2px);
 }
 
-/* Close button */
 .close-button {
   font-size: 1.125em;
-  /* margin-top: 1.5em; */
   border-radius: 3rem;
   color: white;
   font-weight: 500;
-  padding: 1rem 2rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  padding: 1rem 2.5rem;
   background-color: rgb(8, 158, 30);
   margin-bottom: 2.75rem;
   cursor: pointer;
   width: 35vw;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 40px;
-  padding-right: 40px;
   min-width: max-content;
   max-width: 270px;
   border: none;
@@ -669,7 +448,7 @@ body {
   background-color: rgb(6, 138, 26);
 }
 
-/* Terms content box */
+/* Terms content */
 .terms-box {
   background: #fff;
   width: 750px;
@@ -677,7 +456,7 @@ body {
   margin: 0 auto;
   text-align: left;
   transition: all 0.3s ease;
-  padding: 40px 40px 40px 40px;
+  padding: 40px;
   color: rgba(0, 0, 0, 0.7);
   font-weight: 500;
   line-height: 1.6em;
@@ -711,35 +490,29 @@ body {
   text-align: left;
 }
 
-/* Center align short texts */
 .terms-content p:only-child,
 .terms-content p:first-child:last-child {
   text-align: center;
 }
 
-/* Center align specific short paragraphs by adding a class */
 .terms-content p.center-text {
   text-align: center;
 }
 
-/* Center align paragraphs that are likely short (you can add this class to specific paragraphs) */
 .terms-content .short-text {
   text-align: center;
 }
 
-/* Center align the last line of paragraphs in desktop view */
 @media (min-width: 1024px) {
   .terms-content p {
     text-align-last: center;
   }
   
-  /* Keep left alignment for paragraphs with center-text class */
   .terms-content p.center-text {
     text-align-last: center;
   }
 }
 
-/* Remove line spacing for the first two paragraphs */
 .terms-content p:nth-child(1),
 .terms-content p:nth-child(2) {
   margin-bottom: 0.4rem;
@@ -781,7 +554,6 @@ body {
   color: #2563eb;
 }
 
-/* Responsive terms box */
 @media (max-width: 768px) {
   .terms-box {
     width: 90%;
@@ -805,26 +577,17 @@ body {
   }
 }
 
-/* Bottom close button */
 .bottom-close-button {
   font-size: 1.125em;
   border-radius: 3rem;
   color: white;
   font-weight: 500;
-  padding: 1rem 2rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  padding: 1rem 2.5rem;
   background-color: rgb(8, 158, 30);
   margin-top: 2.75rem;
   margin-bottom: 4rem;
   cursor: pointer;
   width: 35vw;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 40px;
-  padding-right: 40px;
   min-width: max-content;
   max-width: 270px;
   border: none;
@@ -836,86 +599,16 @@ body {
   background-color: rgb(6, 138, 26);
 }
 
-/* Focus styles for accessibility */
+/* Accessibility */
 button:focus,
 a:focus {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
-/* Image styles */
 img {
   max-width: 100%;
   height: auto;
-}
-
-/* Mobile Sidebar Menu */
-.mobile-sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
-  animation: fadeIn 0.3s ease;
-}
-
-.mobile-sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 280px;
-  height: 100%;
-  background: white;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  animation: slideIn 0.3s ease;
-  overflow-y: auto;
-}
-
-.mobile-sidebar-header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
-}
-
-.mobile-sidebar-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #666;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
-}
-
-.mobile-sidebar-close:hover {
-  background-color: #f5f5f5;
-}
-
-.mobile-sidebar-nav {
-  padding: 1rem 0;
-}
-
-.mobile-sidebar-item {
-  display: block;
-  padding: 1rem 1.5rem;
-  color: #333;
-  text-decoration: none;
-  border-bottom: 1px solid #f5f5f5;
-  transition: background-color 0.2s ease;
-}
-
-.mobile-sidebar-item:hover {
-  background-color: #f8f9fa;
-}
-
-.mobile-sidebar-text {
-  font-size: 16px;
-  font-weight: 500;
-  font-family: 'Montserrat', sans-serif;
 }
 
 /* Animations */
@@ -937,14 +630,12 @@ img {
   }
 }
 
-/* Hide hamburger on desktop */
 @media (min-width: 769px) {
   .open-menu-dds {
     display: none !important;
   }
 }
 
-/* Show hamburger on mobile */
 @media (max-width: 768px) {
   .open-menu-dds {
     display: block !important;
@@ -955,7 +646,6 @@ img {
   }
 }
 
-/* Dropdown Animation */
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
@@ -967,7 +657,6 @@ img {
   }
 }
 
-/* Hamburger Menu Opening Animation */
 @keyframes hamburgerMenuOpen {
   0% {
     opacity: 0;
@@ -981,117 +670,6 @@ img {
   100% {
     opacity: 1;
     transform: scaleY(1);
-  }
-}
-
-/* Language Toggle Styles */
-.language-toggle {
-  position: relative;
-}
-
-.language-toggle-container {
-  position: relative;
-}
-
-.language-toggle-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.language-toggle-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.language-toggle-text {
-  color: white;
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-@media (min-width: 768px) {
-  .language-toggle-text {
-    font-size: 1rem;
-  }
-}
-
-.language-toggle-flag {
-  width: 1.25rem;
-  height: 0.875rem;
-  object-fit: cover;
-  border-radius: 2px;
-}
-
-@media (min-width: 768px) {
-  .language-toggle-flag {
-    width: 1.5rem;
-    height: 1rem;
-  }
-}
-
-/* Language Dropdown Styles */
-.language-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  min-width: 140px;
-  z-index: 1000;
-  margin-top: 0.5rem;
-  overflow: hidden;
-  animation: dropdownFadeIn 0.2s ease;
-}
-
-@media (min-width: 768px) {
-  .language-dropdown {
-    min-width: 160px;
-  }
-}
-
-.language-option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  color: #333;
-}
-
-.language-option:hover {
-  background-color: #f8f9fa;
-}
-
-.language-option-text {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-@media (min-width: 768px) {
-  .language-option-text {
-    font-size: 1rem;
-  }
-}
-
-.language-option-flag {
-  width: 1.25rem;
-  height: 0.875rem;
-  object-fit: cover;
-  border-radius: 2px;
-}
-
-@media (min-width: 768px) {
-  .language-option-flag {
-    width: 1.5rem;
-    height: 1rem;
   }
 }
 
