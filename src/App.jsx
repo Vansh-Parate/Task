@@ -7,6 +7,7 @@ function App() {
   const [termsData, setTermsData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [isLanguageChanging, setIsLanguageChanging] = useState(false)
 
   const toggleDropdown = () => setShowDropdown(!showDropdown)
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
@@ -49,15 +50,22 @@ function App() {
         setError('Failed to load terms content')
       } finally {
         setLoading(false)
+        setIsLanguageChanging(false)
       }
     }
 
     fetchTerms()
   }, [language])
 
+  const handleLanguageChange = (newLang) => {
+    setIsLanguageChanging(true)
+    setLanguage(newLang)
+    setShowDropdown(false)
+  }
+
   const currentNav = navContent[language]
 
-  if (loading) {
+  if (loading && !termsData) {
     return (
       <div className="terms-page">
         <div className="background-container">
@@ -127,49 +135,45 @@ function App() {
       <nav className="navigation-out">
         <header className="navigation-header">
           <section className="navigation-section">
+            {/* Logo - Desktop Only */}
             <div className="logoa">
               <a href="/">
                 <img alt="" className="navigation-logo" src="https://storage.123fakturera.se/public/icons/diamond.png" />
               </a>
             </div>
             
-            <div className="open-menu-dds" onClick={toggleMenu}>
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="navigation-svg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
-              </svg>
-            </div>
-            
-            <div className="navigation-menu-bar">
-              <div className="menu-drop-down" style={{ height: isMenuOpen ? 'auto' : '0px' }}>
-                <div className="menu-drop-down-container">
-                  <a className="menu-drop-down-item" href="#">
-                    <span className="collectionSpan">
-                      <p className="menu-item-name">{currentNav.home}</p>
-                    </span>
-                  </a>
-                  <a className="menu-drop-down-item" href="#">
-                    <span className="collectionSpan">
-                      <p className="menu-item-name">{currentNav.order}</p>
-                    </span>
-                  </a>
-                  <a className="menu-drop-down-item" href="#">
-                    <span className="collectionSpan">
-                      <p className="menu-item-name">{currentNav.customers}</p>
-                    </span>
-                  </a>
-                  <a className="menu-drop-down-item" href="#">
-                    <span className="collectionSpan">
-                      <p className="menu-item-name">{currentNav.about}</p>
-                    </span>
-                  </a>
-                  <a className="menu-drop-down-item" href="#">
-                    <span className="collectionSpan">
-                      <p className="menu-item-name">{currentNav.contact}</p>
-                    </span>
-                  </a>
-                </div>
+            {/* Hamburger Menu Button - Mobile/Tablet Only */}
+            <div className="hamburger-menu-container">
+              <div className="hamburger-menu" onClick={toggleMenu}>
+                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" className="hamburger-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+                </svg>
               </div>
               
+              {/* Hamburger Dropdown Menu */}
+              {isMenuOpen && (
+                <div className="hamburger-dropdown">
+                  <a className="hamburger-menu-item" href="#">
+                    <span className="hamburger-menu-text">{currentNav.home}</span>
+                  </a>
+                  <a className="hamburger-menu-item" href="#">
+                    <span className="hamburger-menu-text">{currentNav.order}</span>
+                  </a>
+                  <a className="hamburger-menu-item" href="#">
+                    <span className="hamburger-menu-text">{currentNav.customers}</span>
+                  </a>
+                  <a className="hamburger-menu-item" href="#">
+                    <span className="hamburger-menu-text">{currentNav.about}</span>
+                  </a>
+                  <a className="hamburger-menu-item" href="#">
+                    <span className="hamburger-menu-text">{currentNav.contact}</span>
+                  </a>
+                </div>
+              )}
+            </div>
+            
+            {/* Desktop Navigation Menu */}
+            <div className="navigation-menu-bar">
               <div className="pc-menu">
                 <a className="pc-menu-items" href="#">
                   <span className="collectionSpan">
@@ -209,13 +213,13 @@ function App() {
               <div className="lang-drop">
                 <div className="lang-drop-container">
                   <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
-                    <div className="language-Svenska drop-down-element" onClick={() => { setLanguage('sv'); setShowDropdown(false); }}>
+                    <div className="language-Svenska drop-down-element" onClick={() => handleLanguageChange('sv')}>
                       <div className="drop-down-lang-name">Svenska</div>
                       <div className="drop-down-image-div">
                         <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
                       </div>
                     </div>
-                    <div className="language-English drop-down-element" onClick={() => { setLanguage('en'); setShowDropdown(false); }}>
+                    <div className="language-English drop-down-element" onClick={() => handleLanguageChange('en')}>
                       <div className="drop-down-lang-name">English</div>
                       <div className="drop-down-image-div">
                         <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />
@@ -226,6 +230,7 @@ function App() {
               </div>
             </div>
             
+            {/* Mobile Language Toggle */}
             <div className="lang-dropk">
               <div>
                 <div className="dropdownContainer">
@@ -235,13 +240,13 @@ function App() {
                   </div>
                 </div>
                 <div className="dropdownList" style={{ display: showDropdown ? 'block' : 'none' }}>
-                  <div className="language-Svenska drop-down-element" onClick={() => { setLanguage('sv'); setShowDropdown(false); }}>
+                  <div className="language-Svenska drop-down-element" onClick={() => handleLanguageChange('sv')}>
                     <div className="drop-down-lang-name">Svenska</div>
                     <div className="drop-down-image-div">
                       <img src="https://storage.123fakturere.no/public/flags/SE.png" className="drop-down-image" alt="Svenska" />
                     </div>
                   </div>
-                  <div className="language-English drop-down-element" onClick={() => { setLanguage('en'); setShowDropdown(false); }}>
+                  <div className="language-English drop-down-element" onClick={() => handleLanguageChange('en')}>
                     <div className="drop-down-lang-name">English</div>
                     <div className="drop-down-image-div">
                       <img src="https://storage.123fakturere.no/public/flags/GB.png" className="drop-down-image" alt="English" />
@@ -265,7 +270,7 @@ function App() {
         </button>
 
         {/* Terms Content Box */}
-        <div className="terms-box">
+        <div className={`terms-box ${isLanguageChanging ? 'loading' : ''}`}>
           <div className="terms-content">
             {termsData?.content && (
               <div dangerouslySetInnerHTML={{ __html: termsData.content }} />
