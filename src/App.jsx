@@ -39,7 +39,12 @@ function App() {
       setError(null)
       
       try {
-        const response = await fetch(`/api/terms?lang=${language}`)
+        // Use Render URL in production, relative URL in development
+        const apiUrl = import.meta.env.PROD 
+          ? 'https://task-ddfi.onrender.com/api/terms'
+          : `/api/terms`
+        
+        const response = await fetch(`${apiUrl}?lang=${language}`)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }

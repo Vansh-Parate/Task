@@ -10,13 +10,15 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",
     "dotenv": "^17.2.1",
     "fastify": "^5.5.0",
     "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sequelize": "^6.37.5"
